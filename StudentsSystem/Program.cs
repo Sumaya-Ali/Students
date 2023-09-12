@@ -1,4 +1,8 @@
+using BusinessLayer;
+using BusinessLayer.Interfaces;
+using DataAccessLayer;
 using DataAccessLayer.Data;
+using DataAccessLayer.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,8 +13,12 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")
     ));
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
+builder.Services.AddScoped<IStudentDA, StudentDA>();
+builder.Services.AddScoped<IStudentService, StudentService>();
 
 var app = builder.Build();
 

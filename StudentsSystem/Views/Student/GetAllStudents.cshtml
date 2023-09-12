@@ -1,0 +1,33 @@
+﻿@model List<ObjectLayer.Student>
+@{
+    ViewData["Title"] = "Students";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Students</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Telephon</th>
+                <th>BirthDate</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var student in Model)
+            {
+             <tr>
+                 <td>@student.Id</td>
+                 <td>@student.FirstName</td>
+                 <td>@student.LastName</td>
+                 <td>@student.Email</td>
+                 <td>@student.Telephon</td>
+                 <td>@student.BirthDay</td>
+             </tr>              
+            }
+        </tbody>
+    </table>
+</div>
