@@ -1,6 +1,6 @@
 ﻿using BusinessLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-
+using OL=ObjectLayer;
 namespace StudentsSystem.Controllers
 {
     public class StudentController : Controller
@@ -15,6 +15,19 @@ namespace StudentsSystem.Controllers
         public IActionResult GetAllStudents()
         {
             return View(_studentService.GetAllStudents());
+        }
+
+        public IActionResult CreateNewStudent()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateNewStudent(OL::Student student)
+        {
+            _studentService.CreateNewStudent(student);
+            return RedirectToAction("GetAllStudents");
         }
     }
 }

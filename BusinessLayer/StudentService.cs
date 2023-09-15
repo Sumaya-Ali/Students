@@ -17,6 +17,10 @@ namespace BusinessLayer
            return _studentDA.GetAllStudents();
         }
 
+        public void CreateNewStudent(OL::Student student)
+        {
+            _studentDA.CreateNewStudent(student);
+        }
 
     }
 }

@@ -4,8 +4,14 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Students</h1>
-    <table class="table table-bordered">
+    
+    <h1 class="display-4 text-danger">Students</h1>
+    <div class="row container">
+        <div class="col-11"></div>
+        <a asp-controller="Student" asp-action="CreateNewStudent" class="btn btn-warning col-1">New</a>
+    </div>
+    <br />
+    <table class="table table-bordered table-warning text-secondary">
         <thead>
             <tr>
                 <th>ID</th>

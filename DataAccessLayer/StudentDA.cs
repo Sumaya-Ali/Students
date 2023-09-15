@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using DataAccessLayer.Data;
 using DataAccessLayer.Interfaces;
-using DataAccessLayer.Models;
+using MO=DataAccessLayer.Models;
+using ObjectLayer;
 using OL = ObjectLayer;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer
 {
@@ -20,15 +22,23 @@ namespace DataAccessLayer
 
         public List< OL::Student> GetAllStudents()
         {
-            List<Student> resultFromDB = _dBContext.Students.ToList();
+            List<MO::Student> resultFromDB = _dBContext.Students.ToList();
             List<OL::Student> result = new List<OL::Student>();
-            foreach(Student _student in resultFromDB)
+            foreach(MO::Student _student in resultFromDB)
             {
                 OL::Student student = _mapper.Map<OL::Student>(_student);
                 result.Add(student);
             }
             return result;
 
+        }
+
+        public void CreateNewStudent(OL::Student student)
+        {
+            MO::Student _student = _mapper.Map<MO::Student>(student);
+            _dBContext.Students.Add(_student);
+            _dBContext.SaveChanges();
+            
         }
     }
 }

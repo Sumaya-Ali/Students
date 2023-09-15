@@ -10,5 +10,6 @@ namespace DataAccessLayer.Interfaces
     public interface IStudentDA
     {
         public List<OL::Student> GetAllStudents();
+        public void CreateNewStudent(OL::Student student);
     }
 }

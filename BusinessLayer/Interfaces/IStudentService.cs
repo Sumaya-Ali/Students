@@ -10,5 +10,7 @@ namespace BusinessLayer.Interfaces
     public interface IStudentService
     {
         public List<OL::Student> GetAllStudents();
+        public void CreateNewStudent(OL::Student student);
+
     }
 }
