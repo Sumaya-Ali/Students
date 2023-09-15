@@ -21,6 +21,14 @@ namespace BusinessLayer
         {
             _studentDA.CreateNewStudent(student);
         }
+        public void EditStudent(OL::Student student)
+        {
+            _studentDA.EditStudent(student);
+        }
+        public OL::Student EditStudent(int id)
+        {
+           return _studentDA.EditStudent(id);
+        }
 
     }
 }

@@ -40,5 +40,28 @@ namespace DataAccessLayer
             _dBContext.SaveChanges();
             
         }
+
+        public void EditStudent(OL::Student student)
+        {
+            MO::Student _student = _mapper.Map<MO::Student>(student);
+            _dBContext.Students.Update(_student);
+            _dBContext.SaveChanges();
+        }
+
+        public OL::Student EditStudent(int id)
+        {
+
+            var _student = _dBContext.Students.Find(id);
+            if (_student == null)
+            {
+                return null;
+            }
+            else
+            {
+                OL::Student student = _mapper.Map<OL::Student>(_student);
+                return student;
+            }
+            
+        }
     }
 }

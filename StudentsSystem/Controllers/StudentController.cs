@@ -29,5 +29,24 @@ namespace StudentsSystem.Controllers
             _studentService.CreateNewStudent(student);
             return RedirectToAction("GetAllStudents");
         }
+
+        public IActionResult EditStudent(int id)
+        {
+            var student = _studentService.EditStudent(id);
+            if(student == null)
+            {
+                return NotFound();
+            }
+            return View(student);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditStudent(OL::Student student)
+        {
+            _studentService.EditStudent(student);
+            return RedirectToAction("GetAllStudents");
+        }
+
     }
 }

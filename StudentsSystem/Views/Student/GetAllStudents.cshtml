@@ -20,6 +20,7 @@
                 <th>Email</th>
                 <th>Telephon</th>
                 <th>BirthDate</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +33,7 @@
                  <td>@student.Email</td>
                  <td>@student.Telephon</td>
                  <td>@student.BirthDay</td>
+                    <td><a class="btn btn-warning" asp-controller="Student" asp-action="EditStudent" asp-route-id="@student.Id">Edit</a></td>
              </tr>              
             }
         </tbody>
