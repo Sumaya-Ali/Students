@@ -47,8 +47,18 @@ namespace DataAccessLayer
             _dBContext.Students.Update(_student);
             _dBContext.SaveChanges();
         }
+        public void DeleteStudent(int id)
+        {
+            var student = _dBContext.Students.Find(id);
+            if (student != null)
+            {
+                _dBContext.Students.Remove(student);
+                _dBContext.SaveChanges();
 
-        public OL::Student EditStudent(int id)
+            }
+        }
+
+        public OL::Student GetStudentByID(int id)
         {
 
             var _student = _dBContext.Students.Find(id);

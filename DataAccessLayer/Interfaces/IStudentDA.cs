@@ -12,6 +12,7 @@ namespace DataAccessLayer.Interfaces
         public List<OL::Student> GetAllStudents();
         public void CreateNewStudent(OL::Student student);
         public void EditStudent(OL::Student student);
-        public OL::Student EditStudent(int id);
+        public void DeleteStudent(int id);
+        public OL::Student GetStudentByID(int id);
     }
 }

@@ -32,7 +32,7 @@ namespace StudentsSystem.Controllers
 
         public IActionResult EditStudent(int id)
         {
-            var student = _studentService.EditStudent(id);
+            var student = _studentService.GetStudentByID(id);
             if(student == null)
             {
                 return NotFound();
@@ -48,5 +48,22 @@ namespace StudentsSystem.Controllers
             return RedirectToAction("GetAllStudents");
         }
 
+        public IActionResult DeleteStudent(int id)
+        {
+            var student = _studentService.GetStudentByID(id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+            return View(student);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteStudentPost(int id)
+        {
+            _studentService.DeleteStudent(id);
+            return RedirectToAction("GetAllStudents");
+        }
     }
 }
